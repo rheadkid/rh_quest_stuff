@@ -1,0 +1,21 @@
+ <!--
+ Rename as .aslx
+ -->
+ <library>
+ <uibuttons><![CDATA[
+       <div id="button_div" style="padding:5px;border-radius:5px;text-align:center;border:grey solid thin;">
+         <span onclick="ASLEvent('HandleButtonClick', 'recap');" style=";cursor:pointer;">RECAP</span>
+         <span onclick="ASLEvent('HandleButtonClick', 'hint');" style=";cursor:pointer;">HINTS</span>
+       </div>         
+                                                                                                    ]]></uibuttons>
+                                                                                                    
+    <inituserinterface type="script">
+      JS.setCommands ("Hint;Help;Recap;Look;Wait")
+      JS.eval ("$('#compassTable').html('" + game.lookbutton + "');")
+      JS.eval (game.js)
+      str = game.uibuttons
+      JS.addText (str)
+      JS.eval ("$('#button_div').insertAfter($('#location'))")
+    </inituserinterface>
+    
+    </library>
