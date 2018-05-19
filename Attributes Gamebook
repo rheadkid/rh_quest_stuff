@@ -1,0 +1,69 @@
+<!--Saved by Quest 5.7.6606.27193-->
+<asl version="550">
+  <include ref="GamebookCore.aslx" />
+  <game name="Attributes Gamebook">
+    <gameid>5fe64fea-2cc6-4c30-9e95-1a4c6ce12799</gameid>
+    <version>1.0</version>
+    <firstpublished>2018</firstpublished>
+    <author>Richard Headkid</author>
+    <subtitle>The Unexpected Value of Pages</subtitle>
+  </game>
+  <object name="Page1">
+    <description><![CDATA[Please select a gender.<br/><br/>]]></description>
+    <options type="stringdictionary">
+      <item>
+        <key>Male</key>
+        <value>Male</value>
+      </item>
+      <item>
+        <key>Female</key>
+        <value>Female</value>
+      </item>
+    </options>
+    <object name="player">
+      <inherit name="defaultplayer" />
+    </object>
+  </object>
+  <object name="Male">
+    <inherit name="scripttext" />
+    <description>You selected {player.gender}.</description>
+    <options type="stringdictionary">
+      <item>
+        <key>PlayBegins</key>
+        <value>Continue...</value>
+      </item>
+    </options>
+    <script type="script">
+      player.gender = "Male"
+    </script>
+  </object>
+  <object name="Female">
+    <inherit name="scripttext" />
+    <description>You selected {player.gender}.</description>
+    <options type="stringdictionary">
+      <item>
+        <key>PlayBegins</key>
+        <value>Continue...</value>
+      </item>
+    </options>
+    <script type="script">
+      player.gender = "Female"
+    </script>
+  </object>
+  <object name="PlayBegins">
+    <description>Since you are {either player.gender="Male":man, I will say manly things|woman, I will say womanly things}.</description>
+    <script type="script">
+      switch (player.gender) {
+        case ("Male") {
+          msg ("Since you are a man, I will display this text.")
+        }
+        case ("Female") {
+          msg ("I see that you are a woman, so I will try to behave myself!")
+        }
+        default {
+          msg ("Something went wrong!  Please restart the story!!!")
+        }
+      }
+    </script>
+  </object>
+</asl>
